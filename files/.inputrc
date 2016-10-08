@@ -3,6 +3,18 @@
 # https://www.gnu.org/software/bash/manual/bashref.html#Bindable-Readline-Commands
 #
 
+
+############
+# Keymapping
+############
+
+# Remap caps lock to ctrl
+if [ -x /usr/bin/setxkbmap ]; then
+    setxkbmap -option ctrl:nocaps
+fi
+
+
+
 ##########
 # vi mode
 ##########
