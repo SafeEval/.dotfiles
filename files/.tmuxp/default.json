@@ -1,0 +1,45 @@
+{
+  "windows": [
+    {
+      "panes": [
+        "pane",
+        "pane"
+      ],
+      "start_directory": "~/",
+      "layout": "10cc,169x46,0,0{84x46,0,0,0,84x46,85,0,1}",
+      "focus": "true",
+      "window_name": "shell",
+      "options": {
+        "automatic-rename": "off"
+      }
+    },
+    {
+      "panes": [
+        {
+          "shell_command": "vim",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "~/",
+      "layout": "c87f,169x46,0,0,2",
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "vim"
+    },
+    {
+      "panes": [
+        {
+          "focus": "true"
+        }
+      ],
+      "start_directory": "~/",
+      "layout": "c880,169x46,0,0,3",
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "system"
+    }
+  ],
+  "session_name": "0"
+}

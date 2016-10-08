@@ -1,0 +1,9 @@
+
+##########
+# vim-mode
+##########
+
+set editing-mode vi
+set keymap vi-command
+
+

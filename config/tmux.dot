@@ -1,0 +1,2 @@
+DOTFILES=.tmux.conf .tmuxp
+SCRIPTS=tmux.sh

@@ -1,0 +1,10 @@
+# undo files
+*~
+
+# vim artifacts
+*.swp
+*.swo
+
+# vim plugin folders
+**/.vim/autoload
+**/.vim/plugged
