@@ -120,6 +120,16 @@ fi
 
 
 
+############
+# Keymapping
+############
+
+# Remap caps lock to ctrl
+if [ -x /usr/bin/setxkbmap ]; then
+    setxkbmap -option ctrl:nocaps;
+fi;
+
+
 
 ######
 # Bash
