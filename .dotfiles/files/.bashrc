@@ -140,6 +140,12 @@ shopt -s globstar
 stty -ixon
 
 
+#####
+# SSH
+#####
+
+alias agentadd='eval `/usr/bin/ssh-agent -s`; ssh-add -t 1h;'
+
 
 
 #####
