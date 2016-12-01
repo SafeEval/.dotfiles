@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pip_path=`which pip`;
+pip_path=`which pip || which pip3`;
 if [ $? = 0 ]; then
   echo "\t Found 'pip' in $pip_path";
   echo "\t Installing tmuxp";
