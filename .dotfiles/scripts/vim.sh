@@ -3,4 +3,4 @@
 
 # Install plugins
 echo "\t Installing vim plugins";
-vim +PlugInstall +qall;
+echo -ne '\n' | vim +PlugInstall +qall;
