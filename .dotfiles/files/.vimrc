@@ -272,6 +272,11 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 
 
+" ----------------------
+" Interface enhancements
+" ----------------------
+Plug 'Yggdroot/indentLine'
+
 
 " -------------
 " Language tags
