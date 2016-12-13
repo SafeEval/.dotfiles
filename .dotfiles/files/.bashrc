@@ -84,8 +84,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -96,6 +98,7 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -104,6 +107,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -175,6 +179,15 @@ export PATH="$HOME/.local/bin:$PATH"
 
 
 
+######
+# Ruby
+######
+
+export GEM_HOME=$HOME/.gem
+export GEM_PATH=$GEM_HOME
+export PATH=$PATH:$GEM_PATH/bin
+
+
 
 ############
 # JavaScript
@@ -191,12 +204,9 @@ export PATH="$PATH:./node_modules/.bin"
 
 
 
-
-######
+########
 # Heroku
-######
+########
 
-### Added by the Heroku Toolbelt
+# Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-
