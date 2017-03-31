@@ -143,6 +143,10 @@ shopt -s globstar
 # So as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
+# Color pattern, with full output.
+function bcolor {
+  grep --color "$1\|"
+}
 
 #####
 # SSH
