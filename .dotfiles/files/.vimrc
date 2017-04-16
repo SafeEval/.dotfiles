@@ -217,6 +217,7 @@ call plug#begin()
 
 " Useful hotkeys and commands
 " ---------------------------
+Plug 'tpope/vim-commentary'  " gc to comment/uncomment lines
 Plug 'tpope/vim-unimpaired'  " yo for paste mode
 Plug 'tpope/vim-abolish'     " :S for smart substitution
 Plug 'tpope/vim-surround'    " ysiw<div> surround in <div> tags
