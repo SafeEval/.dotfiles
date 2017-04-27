@@ -207,6 +207,16 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:./node_modules/.bin"
 
 
+############
+# Go
+############
+
+export GOPATH=~/go
+export PATH="$PATH:$GOPATH/bin"
+if [ ! -d $GOPATH ]; then
+  mkdir -p $GOPATH/{bin,src};
+fi
+
 
 ########
 # Heroku
