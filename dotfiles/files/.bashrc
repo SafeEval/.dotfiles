@@ -108,6 +108,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ `which htmlhint-ng2` ]; then
+  alias htmlhint='htmlhint-ng2'
+fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -161,7 +165,10 @@ alias agentkey='eval `/usr/bin/ssh-agent -s`; ssh-add -t 1h;'
 #####
 
 export EDITOR="/usr/bin/vim"
-
+# FZF plugin external binaries.
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Universal CTags plugin external binaries.
+export PATH="$HOME/.ctags:$PATH"
 
 
 
@@ -225,3 +232,6 @@ fi
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+

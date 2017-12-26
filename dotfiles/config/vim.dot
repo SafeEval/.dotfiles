@@ -1,2 +1,2 @@
-DOTFILES=.vimrc .vim
+DOTFILES=.vimrc .vim .ctags.d
 SCRIPTS=vim.sh

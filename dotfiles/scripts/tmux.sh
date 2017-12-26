@@ -12,3 +12,11 @@ else
   echo "\t Python's 'pip' not found. Skipping tmuxp";
 fi
 
+
+# Compile .terminfo files.
+# This updates the terminfo database, allowing all
+# terminal types and tmux to show italics.
+# https://sookocheff.com/post/vim/italics/
+tic -o $HOME/.terminfo/ $HOME/.terminfo/tmux.terminfo
+tic -o $HOME/.terminfo/ $HOME/.terminfo/tmux-256color.terminfo
+tic -o $HOME/.terminfo/ $HOME/.terminfo/xterm-256color.terminfo

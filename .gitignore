@@ -8,3 +8,6 @@
 # vim plugin folders
 **/.vim/autoload
 **/.vim/plugged
+
+# ctags
+tags

@@ -1,2 +1,2 @@
-DOTFILES=.tmux.conf .tmuxp
+DOTFILES=.tmux.conf .tmuxp .terminfo
 SCRIPTS=tmux.sh
