@@ -53,7 +53,7 @@ set cursorline
 set showmatch
 
 " Highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 
