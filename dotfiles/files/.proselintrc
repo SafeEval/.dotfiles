@@ -1,5 +1,7 @@
 {
   "checks": {
-    "typography.symbols": false
+    "typography.symbols": false,
+    "after_the_deadline.redundancy": false,
+    "cliches.garner": false
   }
 }
