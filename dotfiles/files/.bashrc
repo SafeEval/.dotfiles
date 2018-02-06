@@ -134,6 +134,8 @@ fi
 if [ -x /usr/bin/setxkbmap ]; then
     setxkbmap -option ctrl:nocaps;
 fi;
+# To reset capslock:
+#setxkbmap -option
 
 
 
