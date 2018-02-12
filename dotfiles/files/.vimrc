@@ -271,13 +271,14 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "vimsnips"]
 " -------------
 
 " Universal CTags: code tag generation.
-" Requires `autoreconf` system package to be installed for compilation.
+" Requires `autoreconf` or `dh-autoreconf` system package to be installed for compilation.
 " https://askubuntu.com/questions/796408/installing-and-using-universal-ctags-instead-of-exuberant-ctags#836521
 " https://stackoverflow.com/questions/25819649/how-to-exclude-multiple-directories-with-exuberant-ctags#25819720
 Plug 'universal-ctags/ctags', { 
                         \'dir': '~/.ctags', 
                         \'do': './autogen.sh; ./configure --prefix=$HOME; make',
                         \}
+
 
 " Autotag: automatically regenerate tags for a file when written.
 Plug 'craigemery/vim-autotag'
@@ -300,6 +301,26 @@ let g:tagbar_type_typescript = {
     \ 'e:enums',
   \ ]
 \ }
+
+" Markdown support for Tagbar.
+" https://github.com/majutsushi/tagbar/wiki#markdown
+Plug 'jszakmeister/markdown2ctags'
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '~/.vim/plugged/markdown2ctags/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
+" Tagbar hotkeys
 nnoremap <C-y> :TagbarToggle<CR>
 nmap <C-y> :TagbarToggle<CR>
 
