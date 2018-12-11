@@ -416,6 +416,20 @@ Plug 'Yggdroot/indentLine'
 " Syntax checking (linting)
 " -------------------------
 
+" Spellchecking text in file types.
+" https://vi.stackexchange.com/questions/6950/how-to-enable-spell-check-for-certain-file-types
+augroup markdownSpell
+    autocmd!
+    autocmd FileType markdown setlocal spell
+    autocmd BufRead,BufNewFile *.md setlocal spell
+augroup END
+augroup textSpell
+    autocmd!
+    autocmd FileType text setlocal spell
+    autocmd BufRead,BufNewFile *.txt setlocal spell
+augroup END
+
+
 " ALE (async lint engine)
 Plug 'w0rp/ale'
 let g:ale_lint_on_text_changed = 'never'
