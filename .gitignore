@@ -6,7 +6,7 @@
 *.swo
 
 # vim spelling files
-*.spl
+dotfiles/files/.vim/spell/
 
 # vim plugin folders
 **/.vim/autoload
