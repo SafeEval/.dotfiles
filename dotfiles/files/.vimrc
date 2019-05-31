@@ -17,9 +17,6 @@ let mapleader=","
 " One less key to hit for commands
 nnoremap ; :
 
-" Insert spaces when hitting TABs
-set expandtab
-
 " Turn help to escape, no accidental hit
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
@@ -100,6 +97,22 @@ nnoremap <leader><space> :noh<cr>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 
+" ======================================
+"            Code Formatting
+" ======================================
+
+" Insert spaces when hitting TABs
+set expandtab
+
+" Hotkey for auto-formatting line.
+nnoremap <leader>f :gqq<cr>
+
+" Hotkey for auto-formatting file.
+nnoremap <leader>F gg=G<cr>
+
+" Hotkey for auto-formatting json.
+nnoremap <leader>j :%!python -m json.tool<cr>
+
 
 " ======================================
 "            Code Folding
@@ -136,6 +149,9 @@ set undofile
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
+
+" Hotkey for TrimWhiteSpace
+nnoremap <leader>t :call TrimWhiteSpace()<cr>
 
 " Fix following a symlink when opening a file (ctrlp issue)
 " http://inlehmansterms.net/2014/09/04/sane-vim-working-directories/
@@ -408,7 +424,7 @@ set updatetime=1000  " Check for git diffs every X ms
 " ----------------------
 " Interface enhancements
 " ----------------------
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 
 
