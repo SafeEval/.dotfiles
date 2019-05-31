@@ -12,5 +12,8 @@ dotfiles/files/.vim/spell/
 **/.vim/autoload
 **/.vim/plugged
 
+# Tmux data files.
+dotfiles/files/.terminfo/t/
+
 # ctags
 tags
