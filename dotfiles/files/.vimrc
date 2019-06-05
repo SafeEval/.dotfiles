@@ -7,6 +7,10 @@
 set nocompatible
 set encoding=utf-8
 
+" No modelines.
+" https://www.rapid7.com/db/?q=modeline
+set modelines=0
+
 
 " ======================================
 "         Interface
