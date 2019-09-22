@@ -202,6 +202,26 @@ export HISTCONTROL=ignoreboth
 # Timestamp commands in history.
 # export HISTTIMEFORMAT='%F %T '
 
+
+###########
+# Sandboxes
+###########
+
+# Firefox resource restriction with cgexec
+# sudo cgcreate -a $USER:$USER -t $USER:$USER -g memory,cpu:browsers
+# echo 512 | sudo tee -a /sys/fs/cgroup/cpu/browsers/cpu.shares
+# echo $((4000 * 1024 * 1024)) | sudo tee -a sys/fs/cgroup/memory/browsers/memory.limit_in_bytes
+# echo 0 | sudo tee -a /sys/fs/cgroup/memory/browsers/memory.swappiness
+alias ffsandbox="cgexec -g cpu,memory:browsers /usr/bin/firefox"
+
+# VMWare resource restriction with cgexec
+# sudo cgcreate -a $USER:$USER -t $USER:$USER -g memory,cpu:hypervisors
+# echo 512 | sudo tee -a /sys/fs/cgroup/cpu/hypervisors/cpu.shares
+# echo $((13000 * 1024 * 1024)) | sudo tee -a sys/fs/cgroup/memory/hypervisors/memory.limit_in_bytes
+# echo 0 | sudo tee -a /sys/fs/cgroup/memory/hypervisors/memory.swappiness
+alias ffvmware="cgexec -g cpu,memory:browsers /usr/lib/vmware/bin/vmware"
+
+
 #####
 # SSH
 #####
@@ -219,6 +239,15 @@ export EDITOR="/usr/bin/vim"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # Universal CTags plugin external binaries.
 export PATH="$HOME/.ctags:$PATH"
+
+
+########
+# Heroku
+########
+
+# Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 #####
@@ -243,17 +272,6 @@ fi
 
 # Add local python directories
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-
-
-
-######
-# Ruby
-######
-
-export GEM_HOME=$HOME/.gem
-export GEM_PATH=$GEM_HOME
-export PATH=$PATH:$GEM_PATH/bin
-
 
 
 ############
@@ -281,29 +299,15 @@ if [ ! -d $GOPATH ]; then
 fi
 
 
-###########
-# Sandboxes
-###########
+######
+# Ruby
+######
 
-# Firefox resource restriction with cgexec
-# sudo cgcreate -a $USER:$USER -t $USER:$USER -g memory,cpu:browsers
-# echo 512 | sudo tee -a /sys/fs/cgroup/cpu/browsers/cpu.shares
-# echo $((4000 * 1024 * 1024)) | sudo tee -a sys/fs/cgroup/memory/browsers/memory.limit_in_bytes
-# echo 0 | sudo tee -a /sys/fs/cgroup/memory/browsers/memory.swappiness
-alias ffsandbox="cgexec -g cpu,memory:browsers /usr/bin/firefox"
+# Ruby version manager.
+export PATH="/usr/share/rvm/bin:$PATH"
 
-# VMWare resource restriction with cgexec
-# sudo cgcreate -a $USER:$USER -t $USER:$USER -g memory,cpu:hypervisors
-# echo 512 | sudo tee -a /sys/fs/cgroup/cpu/hypervisors/cpu.shares
-# echo $((13000 * 1024 * 1024)) | sudo tee -a sys/fs/cgroup/memory/hypervisors/memory.limit_in_bytes
-# echo 0 | sudo tee -a /sys/fs/cgroup/memory/hypervisors/memory.swappiness
-alias ffvmware="cgexec -g cpu,memory:browsers /usr/lib/vmware/bin/vmware"
+export GEM_HOME=$HOME/.gem
+export GEM_PATH=$GEM_HOME
+export PATH="$GEM_PATH/bin:$PATH"
 
 
-########
-# Heroku
-########
-
-# Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
