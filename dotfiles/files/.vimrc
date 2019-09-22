@@ -448,6 +448,7 @@ augroup textSpell
     autocmd FileType text setlocal spell
     autocmd BufRead,BufNewFile *.txt setlocal spell
 augroup END
+set nospell
 
 
 " ALE (async lint engine)
