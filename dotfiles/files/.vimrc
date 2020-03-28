@@ -144,7 +144,8 @@ set fileformat=unix
 " Undo enabled, even after closing (.un~)
 set undofile
 
-
+" Disable *.swp files. No more errors on open.
+set noswapfile
 
 " ======================================
 "           Functions
@@ -170,7 +171,7 @@ function! FollowSymlink()
     "   and open the actual file
     let actual_file = resolve(current_file)
     silent! execute 'file ' . actual_file
-  end
+  endif
 endfunction
 
 
@@ -438,16 +439,16 @@ set updatetime=1000  " Check for git diffs every X ms
 
 " Spellchecking text in file types.
 " https://vi.stackexchange.com/questions/6950/how-to-enable-spell-check-for-certain-file-types
-augroup markdownSpell
-    autocmd!
-    autocmd FileType markdown setlocal spell
-    autocmd BufRead,BufNewFile *.md setlocal spell
-augroup END
-augroup textSpell
-    autocmd!
-    autocmd FileType text setlocal spell
-    autocmd BufRead,BufNewFile *.txt setlocal spell
-augroup END
+" augroup markdownSpell
+"     autocmd!
+"     autocmd FileType markdown setlocal spell
+"     autocmd BufRead,BufNewFile *.md setlocal spell
+" augroup END
+" augroup textSpell
+"     autocmd!
+"     autocmd FileType text setlocal spell
+"     autocmd BufRead,BufNewFile *.txt setlocal spell
+" augroup END
 set nospell
 
 
