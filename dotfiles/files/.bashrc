@@ -105,7 +105,10 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 
+#############################
 # Alias definitions.
+#############################
+
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
@@ -247,7 +250,6 @@ export PATH="$HOME/.ctags:$PATH"
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 #####
@@ -265,10 +267,10 @@ alias git-lineage='git log --all --graph --decorate --oneline --simplify-by-deco
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/workspace
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-VENVWRAP="/usr/share/virtualenvwrapper/virtualenvwrapper.sh"
-if [ -f $VENVWRAP ]; then
-  source $VENVWRAP;
-fi
+# VENVWRAP="/usr/share/virtualenvwrapper/virtualenvwrapper.sh"
+# if [ -f $VENVWRAP ]; then
+#   source $VENVWRAP;
+# fi
 
 # Add local python directories
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
@@ -280,9 +282,9 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Set nvm root directory.
 export NVM_DIR="$HOME/.nvm"
-
 # This loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Local npm modules can be found.
 export PATH="$PATH:./node_modules/.bin"
@@ -303,11 +305,22 @@ fi
 # Ruby
 ######
 
-# Ruby version manager.
-export PATH="/usr/share/rvm/bin:$PATH"
-
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$GEM_HOME
 export PATH="$GEM_PATH/bin:$PATH"
 
+# Ruby version manager.
+# May need to fix paths in `.profile` to fix warnings.
+export PATH="/usr/share/rvm/bin:$PATH"
 
+
+
+
+###################
+# Kubernetes
+###################
+
+source <(kubectl completion bash)
+
+# Istio
+export PATH="$PATH:$HOME/bin/istioctl"
