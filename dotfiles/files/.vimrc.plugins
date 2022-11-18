@@ -254,6 +254,99 @@ autocmd FileType cfg setlocal commentstring=#\ %s
 autocmd FileType sls setlocal commentstring=#\ %s
 
 
+
+" ------------------------------
+" Code completion and generation
+" ------------------------------
+
+" TODO: look at vimcompleteme as an alternative
+Plug 'ajh17/VimCompletesMe'
+
+" YouCompleteMe code completion
+"Plug 'Valloric/YouCompleteMe'  " LARGE download (~200MB)
+let g:ycm_autoclose_preview_window_after_completion=1
+
+" supertab lets YCM and snippets not trip over each other.
+" make YCM compatible with UltiSnips (using supertab)
+Plug 'ervandew/supertab'
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+
+" Snippet engine and library
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" Where to find custom snippets, including custom ones
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "vimsnips"]
+
+
+
+" -------------
+" Language tags
+" -------------
+
+" Universal CTags: code tag generation.
+" Requires `autoreconf` or `dh-autoreconf` system package to be installed for compilation.
+" https://askubuntu.com/questions/796408/installing-and-using-universal-ctags-instead-of-exuberant-ctags#836521
+" https://stackoverflow.com/questions/25819649/how-to-exclude-multiple-directories-with-exuberant-ctags#25819720
+Plug 'universal-ctags/ctags', { 
+                        \'dir': '~/.ctags', 
+                        \'do': './autogen.sh; ./configure --prefix=$HOME; make',
+                        \}
+
+
+" Autotag: automatically regenerate tags for a file when written.
+Plug 'craigemery/vim-autotag'
+
+" Tagbar: List of tags in current file, bird's eye view.
+" Requires ctags for tag generation
+Plug 'majutsushi/tagbar'
+" TypeScript support for Tagbar.
+" https://github.com/majutsushi/tagbar/wiki#exuberant-ctags-vanilla
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+\ }
+
+" Markdown support for Tagbar.
+" https://github.com/majutsushi/tagbar/wiki#markdown
+Plug 'jszakmeister/markdown2ctags'
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '~/.vim/plugged/markdown2ctags/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
+" Tagbar hotkeys
+nnoremap <C-y> :TagbarToggle<CR>
+nmap <C-y> :TagbarToggle<CR>
+
+
+
 " ----------
 " Navigation
 " ----------
@@ -328,11 +421,34 @@ map <C-n> :NERDTreeToggle<CR>
 " Git integration
 " ---------------
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'  " Shows git diff info in the gutter
+set updatetime=1000  " Check for git diffs every X ms
+
+
+
+" ----------------------
+" Interface enhancements
+" ----------------------
+" Plug 'Yggdroot/indentLine'
+
+
 
 " -------------------------
 " Syntax checking (linting)
 " -------------------------
 
+" Spellchecking text in file types.
+" https://vi.stackexchange.com/questions/6950/how-to-enable-spell-check-for-certain-file-types
+" augroup markdownSpell
+"     autocmd!
+"     autocmd FileType markdown setlocal spell
+"     autocmd BufRead,BufNewFile *.md setlocal spell
+" augroup END
+" augroup textSpell
+"     autocmd!
+"     autocmd FileType text setlocal spell
+"     autocmd BufRead,BufNewFile *.txt setlocal spell
+" augroup END
 set nospell
 
 
@@ -386,10 +502,43 @@ let g:ale_python_pylint_options = '--load-plugins pylint_django'
 " Python support
 " --------------
 
+Plug 'jmcantrell/vim-virtualenv' " Python virtualenv support
+Plug 'tmhedberg/SimpylFold'  " Python specific code folding
+let g:SimpylFold_docstring_preview = 0  " Don't fold docstrings and imports
+let g:SimpylFold_fold_import = 0
+
+
+
+" ---------------------
+" Status bar
+" ---------------------
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+" Default theme
+let g:airline_theme = 'term'
+" Enable enhanced fonts with unicode
+let g:airline_powerline_fonts = 1
+" Enable tagbar integration
+let g:airline#extensions#tagbar#enabled = 1
+" Enable virtualenv integration
+let g:airline#extensions#virtualenv#enabled = 1
+
+
 
 " --------------------------------------
 " Syntax definitions (for highlighting)
 " --------------------------------------
+
+Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['python']  " Handled by python-mode
+let g:polyglot_disabled += ['html']  " Handled by python-mode
+" Plug 'leafgarland/typescript-vim'  " Handled by vim-polyglot
+" Plug 'lepture/vim-jinja'  " Handled by vim-polyglot
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 1 " Only interpret *.jsx
+Plug 'saltstack/salt-vim'
 
 " Python syntax file (for highlighting).
 " Also installs redundant features, which are disabled.
