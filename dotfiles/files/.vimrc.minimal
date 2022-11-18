@@ -258,6 +258,12 @@ autocmd FileType sls setlocal commentstring=#\ %s
 " Navigation
 " ----------
 
+
+" NerdTree: file system browser
+Plug 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+
+
 " FZF: fuzzy file search
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run install script
 " https://github.com/junegunn/fzf/wiki/Examples-(vim)
